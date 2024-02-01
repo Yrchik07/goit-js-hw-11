@@ -17,15 +17,24 @@ input.addEventListener('submit', e =>{
 });
 
 function searchPicture(pixabay){
-  const BASE_URL = 'https://pixabay.com/api/';
+  const BASE_URL = 'https://pixabay.com/api/?key=';
   const API_KEY = '42108829-54920070c40067c28d8228e80';
-  const PARAMS = `?symbol=${pixabay}`;
-  const url = BASE_URL + API_KEY + PARAMS;
+  const Q = '&q=';
+  const PARAMS = encodeURIComponent(`${pixabay}`);
+  const url = BASE_URL + API_KEY + Q + PARAMS;
 
   return fetch(url).then(res => res.json());
 
 }
 
+// var API_KEY = '42108829-54920070c40067c28d8228e80';
+// var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent('red roses');
+// $.getJSON(URL, function(data){
+// if (parseInt(data.totalHits) > 0)
+//     $.each(data.hits, function(i, hit){ console.log(hit.pageURL); });
+// else
+//     console.log('No hits');
+// });
 
 function pictureTemplate(picture) {
   return `<div class="hero-card card">
