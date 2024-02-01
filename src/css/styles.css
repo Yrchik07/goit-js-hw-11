@@ -24,7 +24,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-.box{
+.form_serch{
   margin-top: 36px;
 display: flex;
 flex-wrap: nowrap;
@@ -55,9 +55,17 @@ button{
 }
 .serch{
   margin-top: 32px;
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
+  flex-direction: column; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.is-open{
+  display: none;
 }
 h2{
   color: #2E2F42;
@@ -68,9 +76,9 @@ font-weight: 400;
 line-height: 24px; /* 150% */
 letter-spacing: 0.64px;
 }
-.serchCircle{
+/* .serchCircle{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 
-}
+} */

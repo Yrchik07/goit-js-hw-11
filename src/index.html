@@ -8,15 +8,18 @@
 </head>
 <body>
   <div class="box">
-    <input type="text" placeholder="Search images...">
-    <button type="submit">Search</button>
-  </div>
+    <form class="form_serch js-search-form">
+      <input name="form" type="text" placeholder="Search images...">
+      <button type="submit">Search</button>
+    </form>
 
-  <div class="serch">
+  <div class="serch is-open">
     <h2>Loading images, please wait...</h2>
-</div>
-<div class="serchCircle">
-  <span class="loader"></span>
+  <!-- <div class="serchCircle"> -->
+    <span class="loader"></span>
+  <!-- </div> -->
+  </div>
+  <div class="picture_container js_picture_container" style="justify-content: start"></div>
 </div>
 
 
