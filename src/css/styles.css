@@ -76,9 +76,36 @@ font-weight: 400;
 line-height: 24px; /* 150% */
 letter-spacing: 0.64px;
 }
-/* .serchCircle{
+
+.img-card{
+  width: 360px;
+  height: 250px;
+  display: flex;
+}
+
+.picture-image{
+  width: 360px;
+  height: 200px;
+
+}
+.picture_container{
+  margin-top: 32px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-
-} */
+  gap: 24px;
+}
+.image-container{
+  width: 360px;
+  height: 200px;
+}
+.description{
+  display: flex;
+  flex-wrap: wrap;
+}
+.description-item{
+  display: flex;
+  flex-wrap: wrap;
+width: 90px;
+flex-direction: column;
+align-items: center;
+}
