@@ -77,27 +77,35 @@ line-height: 24px; /* 150% */
 letter-spacing: 0.64px;
 }
 
-.img-card{
-  width: 360px;
-  height: 250px;
-  display: flex;
+.gallery{
+  margin-top: 32px;
+   display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
-.picture-image{
+.gallery-item{
+  width: 360px;
+  border: 1px solid #808080;
+  /* height: 250px; */
+  /* display: flex;
+  flex-wrap: wrap; */
+}
+.gallery-image{
+  display: flex;
   width: 360px;
   height: 200px;
 
 }
-.picture_container{
-  margin-top: 32px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
+/* .picture-image{
+  width: 360px;
+  height: 200px;
+
 }
 .image-container{
   width: 360px;
   height: 200px;
-}
+/* } */
 .description{
   display: flex;
   flex-wrap: wrap;
