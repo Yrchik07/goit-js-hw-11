@@ -8,16 +8,22 @@ const picCont = document.querySelector('.gallery');
 
 
 input.addEventListener('submit', e =>{
+
   e.preventDefault();
 
+  document.getElementById("loader").style.display = "flex";
+
   const name = e.target.elements.form.value.trim();
+
 if(name === ''){
   e.target.reset();
   picCont.innerHTML = "";
+  document.getElementById("loader").style.display = "none";
   return;
 }
 
   searchPicture(name).then(data => {
+    document.getElementById("loader").style.display = "none";
     renderPicture(data);
     gallery.refresh();
   });
@@ -36,14 +42,12 @@ function searchPicture(pixabay){
 
     });
     const url = BASE_URL + PARAMS;
-
-  return fetch(url).then(res => res.json()).catch();
+  return fetch(url).then(res => res.json()).catch(error => {
+    console.error('Error retrieving image link:', error);
+  });
 }
 
-
-
 function pictureTemplate({webformatURL,largeImageURL,tags,likes,views,comments,downloads}){
-
   return `<li class="gallery-item">
   <a class="gallery-link" href="${largeImageURL}">
     <img class="gallery-image" src="${webformatURL}" alt="${tags}">
@@ -89,7 +93,6 @@ function renderPicture(picture) {
   const markup = picturesTemplate(picture);
   if(markup.length === 0)return;
   picCont.insertAdjacentHTML('beforeend', markup);
-console.log(markup)
 }
 
 const gallery = new SimpleLightbox('.gallery a', {captionDelay: 250, captionsData: 'alt'});
