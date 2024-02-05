@@ -4,9 +4,8 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 const input = document.querySelector('.js-search-form');
-const inputValue = document.querySelector('.js-search-form input');
-const picCont = document.querySelector('.js_picture_container');
-
+// const picCont = document.querySelector('.js_picture_container');
+const picCont = document.querySelector('.gallery');
 
 
 input.addEventListener('submit', e =>{
@@ -18,8 +17,9 @@ input.addEventListener('submit', e =>{
     renderPicture(data);
   });
   e.target.reset();
-  // markup.remove();
+  picCont.innerHTML = "";
 });
+
 
 function searchPicture(pixabay){
   const BASE_URL = 'https://pixabay.com/api/';
@@ -45,29 +45,41 @@ function searchPicture(pixabay){
 
 
 function pictureTemplate({webformatURL,largeImageURL,tags,likes,views,comments,downloads,total}) {
-  return `<div class="img-card card">
-  <div class="image-container">
-    <img class="picture-image" src="${webformatURL}" alt="#">
-    <ul class="description">
-      <li class="description-item">
-        <h2>likes</h2>
-        <h3>${likes}</h3>
-      </li>
-      <li class="description-item">
-        <h2>views</h2>
-        <h3>${views}</h3>
-      </li>
-      <li class="description-item">
-        <h2>comments</h2>
-        <h3>${comments}</h3>
-      </li>
-      <li class="description-item">
-        <h2>downloads</h2>
-        <h3>${downloads}</h3>
-      </li>
-    </ul>
-</div>
-</div>`;}
+  return `<li class="gallery-item">
+  <a class="gallery-link" href="${largeImageURL}">
+    <img
+      class="gallery-image"
+      src="${webformatURL}"
+      alt="${tags}"
+    />
+  </a>
+</li>`;
+}
+//   return `<div class="img-card card">
+//   <div class="image-container">
+//   <a class="gallery-link" href="${largeImageURL}">
+//     <img class="picture-image" src="${webformatURL}" alt="#">
+//     </a>
+//     <ul class="description">
+//       <li class="description-item">
+//         <h2>likes</h2>
+//         <h3>${likes}</h3>
+//       </li>
+//       <li class="description-item">
+//         <h2>views</h2>
+//         <h3>${views}</h3>
+//       </li>
+//       <li class="description-item">
+//         <h2>comments</h2>
+//         <h3>${comments}</h3>
+//       </li>
+//       <li class="description-item">
+//         <h2>downloads</h2>
+//         <h3>${downloads}</h3>
+//       </li>
+//     </ul>
+// </div>
+// </div>`;}
 
 function picturesTemplate(picture){
   return picture.hits.map(pictureTemplate).join('');
@@ -78,3 +90,5 @@ function renderPicture(picture) {
   picCont.insertAdjacentHTML('beforeend', markup);
   console.log(picture)
 }
+
+const gallery = new SimpleLightbox('.gallery a', {captionDelay: 250, captionsData: 'alt'});
