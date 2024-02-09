@@ -78,6 +78,8 @@ h2{
 .gallery{
   margin-top: 32px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 24px;
 }
